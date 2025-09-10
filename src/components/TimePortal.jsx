@@ -250,12 +250,11 @@ export default function TimePortal({ onLogout, user, appMode = "local" }) {
     }, 0);
   };
 
-  // Helper: Get all working days in the current week (Mon-Sun)
-  const getWeekDates = () => {
-    const now = new Date();
-    const dayOfWeek = now.getDay(); // 0=Sun, 1=Mon, ...
-    const monday = new Date(now);
-    monday.setDate(now.getDate() - ((dayOfWeek + 6) % 7));
+  // Helper: Get all working days in the week (Mon-Sun) of the selected date
+  const getWeekDates = (date = selectedDate) => {
+    const dayOfWeek = date.getDay(); // 0=Sun, 1=Mon, ...
+    const monday = new Date(date);
+    monday.setDate(date.getDate() - ((dayOfWeek + 6) % 7));
     let weekDates = [];
     for (let i = 0; i < 7; i++) {
       const d = new Date(monday);
@@ -277,10 +276,10 @@ export default function TimePortal({ onLogout, user, appMode = "local" }) {
     return monthDates;
   };
 
-  // Calculate average hours for week
+  // Calculate average hours for the week of the selected date
   const getAverageHours = () => {
     // Only count days with at least one completed or live session
-    const weekDates = getWeekDates();
+    const weekDates = getWeekDates(selectedDate);
     let totalMinutes = 0;
     let workingDays = 0;
     weekDates.forEach(dateStr => {
