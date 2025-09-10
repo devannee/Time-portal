@@ -1,0 +1,15 @@
+{
+  "date": "2025-08-14",
+  "logs": [
+    {
+      "checkIn": "2025-08-14T05:17:00.000Z",
+      "checkOut": "2025-08-14T07:30:00.000Z"
+    },
+    {
+      "checkIn": "2025-08-14T08:32:00.000Z",
+      "checkOut": null
+    }
+  ],
+  "totalMinutes": 133,
+  "sessions": 2
+}
